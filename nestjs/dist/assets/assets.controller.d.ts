@@ -11,5 +11,10 @@ export declare class AssetsController {
     create(body: {
         id: string;
         symbol: string;
-    }): void;
+    }): import(".prisma/client").Prisma.Prisma__AssetClient<import("@prisma/client/runtime").GetResult<{
+        id: string;
+        symbol: string;
+        created_at: Date;
+        updated_at: Date;
+    }, unknown> & {}, never, import("@prisma/client/runtime").DefaultArgs>;
 }

@@ -8,13 +8,13 @@ export class OrdersService {
     constructor(private prismaService: PrismaService) {}
 
     create(input: {asset_id: string; price: number}){
-        this.prismaService.order.create({
+        return this.prismaService.order.create({
             data: {
                 asset_id: input.asset_id,
                 price: input.price,
                 status: OrderStatus.OPEN
             },
-        })
+        });
     }
 
     all(){
