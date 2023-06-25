@@ -6,10 +6,10 @@ export class AssetsService {
 
     constructor(private prismaService: PrismaService){}
 
-    create(data: {id: string, symbol: string}){
-        this.prismaService.asset.create({
+    create(data: {id: string; symbol: string}){
+        return this.prismaService.asset.create({
             data,
-        })
+        });
     }
 
     all(){

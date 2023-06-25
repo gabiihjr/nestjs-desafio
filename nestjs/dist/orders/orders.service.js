@@ -9,24 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AssetsService = void 0;
+exports.OrdersService = void 0;
 const common_1 = require("@nestjs/common");
+const client_1 = require("@prisma/client");
 const prisma_service_1 = require("../prisma/services/prisma/prisma.service");
-let AssetsService = exports.AssetsService = class AssetsService {
+let OrdersService = exports.OrdersService = class OrdersService {
     constructor(prismaService) {
         this.prismaService = prismaService;
     }
-    create(data) {
-        return this.prismaService.asset.create({
-            data,
+    create(input) {
+        return this.prismaService.order.create({
+            data: {
+                asset_id: input.asset_id,
+                price: input.price,
+                status: client_1.OrderStatus.OPEN
+            },
         });
     }
     all() {
-        return this.prismaService.asset.findMany();
+        return this.prismaService.order.findMany();
     }
 };
-exports.AssetsService = AssetsService = __decorate([
+exports.OrdersService = OrdersService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], AssetsService);
-//# sourceMappingURL=assets.service.js.map
+], OrdersService);
+//# sourceMappingURL=orders.service.js.map
